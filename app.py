@@ -18,7 +18,17 @@ def index():
         print(text_sentiment)
         print(textbox_sentiment)
 
-        return (render_template("index.html", result1=text_sentiment, result2=textbox_sentiment))
+        print(text_sentiment.polarity)
+        print(textbox_sentiment.polarity)
+        print(text_sentiment.subjectivity)
+        print(textbox_sentiment.subjectivity)
+
+        titletext = ("The polarity of the title text is " + str(text_sentiment.polarity) +
+                     " and the subjectivity is " + str(text_sentiment.subjectivity) + ". \n")
+        maintext = ("The polarity of the body text is " + str(textbox_sentiment.polarity) +
+                    " and the subjectivity is " + str(textbox_sentiment.subjectivity) + ". \n")
+
+        return (render_template("index.html", result1=titletext, result2=maintext))
     else:
         return (render_template("index.html", result1='No Text Submitted', result2='No Text Submitted'))
 
